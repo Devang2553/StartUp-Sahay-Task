@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import ButtonWithIcon from "../Components/buttonWithIcon";
 import Input from "../Components/input";
@@ -23,6 +24,8 @@ const SignUp = () => {
   const handleConfirmPasswordChange = (event) => {
     setConfirmPassword(event.target.value);
   };
+
+  const router=useRouter();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -84,7 +87,7 @@ const SignUp = () => {
               className="rounded-b-md"
             />
           </div>
-          <button type="submit" className="bg-blue-600 w-full rounded-md p-2">
+          <button type="submit" onClick={()=>router.push('/DashBoard')} className="bg-blue-600 w-full rounded-md p-2">
             <p className="text-white">Sign Up</p>
           </button>
           <a

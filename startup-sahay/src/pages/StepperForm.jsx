@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import Textarea from "@/Components/Textarea";
 import Inputtag from "@/Components/Inputtag";
 
@@ -8,6 +9,7 @@ import DrpStep from "@/Components/DrpStep";
 
 const StepperForm = () => {
   const [step, setStep] = useState(1);
+
 
   const nextStep = () => {
     setStep(step + 1);
@@ -160,6 +162,8 @@ const StepTwo = ({ previousStep }) => {
     // perform validation
   };
 
+  const router=useRouter();
+
   return (
     <div className="flex flex-col p-12 bg-slate-800">
 
@@ -184,7 +188,7 @@ const StepTwo = ({ previousStep }) => {
             Previous
           </button>
 
-          <button type="submit" className="rounded-md bg-blue-600 px-8  mt-4 text-white">
+          <button type="submit" onClick={()=>router.push('/DashBoard')} className="rounded-md bg-blue-600 px-8  mt-4 text-white">
             Submit
           </button>
         </div>
@@ -214,7 +218,7 @@ const StepThree = ({ previousStep }) => {
       <button type="button" onClick={previousStep}>
         Previous
       </button>
-      <button type="submit">Submit</button>
+      <button type="submit" >Submit</button>
     </form>
   );
 };
