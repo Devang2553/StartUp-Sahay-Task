@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import ButtonWithIcon from "../Components/buttonWithIcon";
 import Input from "../Components/input";
@@ -5,6 +6,8 @@ import Input from "../Components/input";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+ const router=useRouter();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -49,7 +52,7 @@ const Login = () => {
               className="rounded-b-md"
             />
           </div>
-          <button type="submit" className="bg-blue-600 w-full rounded-md p-2">
+          <button type="submit" onClick={()=>router.push('/DashBoard')} className="bg-blue-600 w-full rounded-md p-2">
             <p className="text-white">Login</p>
           </button>
         </form>
