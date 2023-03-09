@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import Textarea from "@/Components/Textarea";
 import Inputtag from "@/Components/Inputtag";
 
@@ -29,6 +30,7 @@ handleSubmit(formData);
 
 const StepperForm = () => {
   const [step, setStep] = useState(1);
+
 
   const nextStep = () => {
     setStep(step + 1);
@@ -198,17 +200,17 @@ const StepOne = ({ nextStep }) => {
 const StepTwo = ({ previousStep }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
+    router.push("/DashBoard");
     // perform validation
   };
+
+  const router=useRouter();
 
   return (
     <div className="flex flex-col p-12 bg-slate-800">
 
       <form
-<<<<<<< Updated upstream
       
-=======
->>>>>>> Stashed changes
       action="/api/form" method="post"
         onSubmit={handleSubmit}
         className="border-2  max-w-xl mx-auto p-6 rounded-lg bg-slate-300  flex flex-col px-20"
@@ -260,7 +262,7 @@ const StepThree = ({ previousStep }) => {
       <button type="button" onClick={previousStep}>
         Previous
       </button>
-      <button type="submit">Submit</button>
+      <button type="submit" >Submit</button>
     </form>
   );
 };

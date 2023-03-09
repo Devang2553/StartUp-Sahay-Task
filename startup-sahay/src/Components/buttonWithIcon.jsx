@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import Image from "next/image";
 import React from "react";
 
 const ButtonWithIcon = (props ,onClick) => {
@@ -9,7 +10,7 @@ const ButtonWithIcon = (props ,onClick) => {
         [props.className]: !!props.className,
       })}
     >
-      {props.icon}
+      <Image src={props.icon} alt="Image" className={props.class}/>
       {props.children}
     </button>
   );
