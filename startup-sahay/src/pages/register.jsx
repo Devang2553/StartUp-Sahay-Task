@@ -4,11 +4,11 @@ import ButtonWithIcon from "../Components/buttonWithIcon";
 import Input from "../Components/input";
 import Fb from "../../public/fb.svg";
 import Google from "../../public/google.svg";
-import Instagram from "../../public/insta.svg";
+import Instagram from "../../public/instagram.svg";
 import axiosInstance from "@/utils/axiosInstance";
 
 const SignUp = () => {
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -18,7 +18,7 @@ const SignUp = () => {
   }
 
   const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+    setName(event.target.value);
   };
 
   const handleEmailChange = (event) => {
@@ -35,6 +35,25 @@ const SignUp = () => {
 
   const router = useRouter();
 
+
+  const handleClick = async (e) => {
+    try {
+      e.preventDefault();
+      if (password !== confirmPassword) {
+        alert("Passwords don't match");
+      } else {
+      const data = { name,email, password,confirmPassword };
+      await axiosInstance.post("/users/register", data );
+      }
+      // Redirect the user to the dashboard or home page
+      router.push("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+
   
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -42,7 +61,7 @@ const SignUp = () => {
       alert("Passwords don't match");
     } else {
       const formData = {
-        username: username,
+        name: name,
         email: email,
         password: password,
         confirmPassword: confirmPassword,
@@ -57,21 +76,21 @@ const SignUp = () => {
   return (
     <div className="flex flex-col justify-center  h-screen items-center bg-slate-800">
       <div className="w-1/3 bg-slate-300 border-2 rounded-xl p-5  flex-col flex gap-2">
-        <form onSubmit={handleSubmit} className="  flex-col flex gap-4">
+        <form onSubmit={handleClick} className="  flex-col flex gap-4">
           <h2 className="font-bold text-2xl">Sign Up</h2>
           <div className="flex flex-col gap-1">
             <Input
               id="name"
-              name="username"
+              name="name"
               type="text"
               placeholder="name"
-              value={username}
+              value={name}
               onChange={handleUsernameChange}
               className="rounded-t-md"
             />
             <Input
               id="email-address"
-              name="userEmail"
+              name="Email"
               type="email"
               placeholder="Email address"
               value={email}
@@ -79,7 +98,7 @@ const SignUp = () => {
             />
             <Input
               id="password"
-              name="userPassword"
+              name="password"
               type="password"
               placeholder="Password"
               value={password}
@@ -87,7 +106,7 @@ const SignUp = () => {
             />
             <Input
               id="confirm-password"
-              name="userConfirmPassword"
+              name="confirmPassword"
               type="password"
               placeholder="Confirm Password"
               value={confirmPassword}
@@ -95,16 +114,16 @@ const SignUp = () => {
               className="rounded-b-md"
             />
           </div>
-          <button type="submit" onClick={()=> router.push('/login')} className="bg-blue-600 w-full rounded-md p-2">
+          <button type="submit"  className="bg-blue-600 w-full rounded-md p-2">
             <p className="text-white">Sign Up</p>
           </button>
+        </form>
           <a
             href=""
             className="text-center font-normal text-gray-600 hover:text-blue-900 pb-1"
           >
             Forgot your password?
           </a>
-        </form>
 
         <div className="flex-col flex gap-2 ">
           <ButtonWithIcon
@@ -124,7 +143,7 @@ const SignUp = () => {
           </ButtonWithIcon>
           <ButtonWithIcon
             icon={Instagram}
-            class=" pr-5 py-2"
+            class="   h-9  w-auto"
             className="bg-gradient-to-tr from-[#F6e05e] to-[#C026D3] w-full rounded-md pl-3"
           >
             Sign up with Instagram

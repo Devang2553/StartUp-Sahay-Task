@@ -4,7 +4,7 @@ import ButtonWithIcon from "../Components/buttonWithIcon";
 import Input from "../Components/input";
 import Fb from "../../public/fb.svg";
 import Google from "../../public/google.svg";
-import Instagram from "../../public/insta.svg";
+import Instagram from "../../public/instagram.svg";
 import axiosInstance, { axiosAuth } from "@/utils/axiosInstance";
 
 const Login = () => {
@@ -41,14 +41,7 @@ const Login = () => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const formData = {
-      email: email,
-      password: password,
-    };
-    console.log(formData);
-  };
+
   return (
     <div className="flex flex-col justify-center  h-screen items-center bg-slate-800">
       <div className="w-1/3 bg-slate-300 border-2 rounded-xl p-5  flex-col flex gap-2">
@@ -76,7 +69,7 @@ const Login = () => {
               className="rounded-b-md"
             />
           </div>
-          <button type="submit" className="bg-blue-600 w-full rounded-md p-2">
+          <button type="submit" className="bg-blue-600 w-full rounded-md p-2 text-white">
             Login
           </button>
         </form>
@@ -102,8 +95,8 @@ const Login = () => {
           </ButtonWithIcon>
           <ButtonWithIcon
             icon={Instagram}
-            class=" pr-5 py-2"
-            className="bg-gradient-to-tr from-[#F6e05e] to-[#C026D3] w-full rounded-md pl-3"
+            class=" h-8 w-auto"
+            className="bg-gradient-to-tr from-[#F6e05e] to-[#C026D3] w-full rounded-md pl-3 py-2"
           >
             Login with Instagram
           </ButtonWithIcon>
