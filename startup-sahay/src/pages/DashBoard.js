@@ -191,24 +191,24 @@ const DashBoard = () => {
             <p>Information about you and your company</p>
           </div>
         </div>
-        <div className=" basic-info flex flex-col text-center    gap-5 border  rounded-md max-w-screen-md mx-auto p-5 bg-slate-300">
+        <div className=" basic-info flex flex-col     gap-5 border  rounded-md max-w-screen-md mx-auto p-5 bg-slate-300">
           <div>
             <h1 className="font-normal text-3xl">Basic info</h1>
           </div>
           <div className="flex flex-col gap-5 ">
-            <div className="flex  justify-around  border-b-2 sm:flex-col md:flex-row flex-wrap border-slate-400 max-w-screen-sm pb-3">
+            <div className="flex  gap-36  border-b-2 sm:flex-col md:flex-row flex-wrap border-slate-400 max-w-screen-sm pb-3">
               <h2 className="text-slate-600 ">CompanyName</h2>
               <p className="text-lg">RumBum</p>
             </div>
-            <div className="flex  justify-around     border-b-2 border-slate-400 max-w-screen-sm pb-3">
+            <div className="flex  gap-44    border-b-2 border-slate-400 max-w-screen-sm pb-3">
               <h2 className="text-slate-600">yourEmail</h2>
               <p className="text-lg  ">devang6314@gmail.com</p>
             </div>
-            <div className="flex  justify-around border-b-2 border-slate-400 max-w-screen-sm pb-3">
+            <div className="flex  gap-48 border-b-2 border-slate-400 max-w-screen-sm pb-3">
               <h2 className="text-slate-600">Address</h2>
               <p className="text-lg">bla bla bla</p>
             </div>
-            <div className="flex justify-around  max-w-screen-sm pb-3">
+            <div className="flex gap-44  max-w-screen-sm pb-3">
               <h2 className="text-slate-600">Phone No.</h2>
               <p className="text-lg">9999999999</p>
             </div>
