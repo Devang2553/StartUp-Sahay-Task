@@ -1,71 +1,59 @@
 import { Fragment, useState } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Menu, Transition } from "@headlessui/react";
 import Profile from "../../public/avatarr.svg";
+import About from "../../public/aboutus.svg";
 import Logo from "../../public/logo.png";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-
 const DashBoard = () => {
+  const signOut = () => {
+    localStorage.removeItem("token");
+
+    if (!localStorage.getItem("token")) {
+      // If the token is not present, redirect the user to the sign-in page
+      window.location.href = "/login";
+    }
+  };
+
+  const router = useRouter();
   return (
     <div>
-      <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-        <div className="px-3 py-3 lg:px-5 lg:pl-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center justify-start">
-              <button
-                type="button"
-                className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-              >
-                <span className="sr-only">Open sidebar</span>
-                <svg
-                  className="w-6 h-6"
-                  aria-hidden="true"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
+      <div>
+        <nav className="fixed top-0 z-50 w-full  border-b  bg-gray-800 border-gray-700">
+          <div className="px-3 py-3 lg:px-5 lg:pl-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center justify-start">
+                <a
+                  href="https://startupsahay.com"
+                  className="flex ml-2 md:mr-24"
                 >
-                  <path
-                    clipRule="evenodd"
-                    fillRule="evenodd"
-                    d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+                  <Image
+                    src={Logo}
+                    className="h-8 w-auto mr-3 bg-white"
+                    alt="startup Logo"
+                    priority="low"
                   />
-                </svg>
-              </button>
-              <a href="https://flowbite.com" className="flex ml-2 md:mr-24">
-                <Image
-                  src={Logo}
-                  className="h-8 w-auto mr-3 bg-white"
-                  alt="FlowBite Logo"
-                />
-              </a>
-            </div>
-            <div className="flex items-center">
-              <div className="flex items-center ml-3">
-                <Menu as="div" className="relative ml-3">
-                  <div>
-                    <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                      <span className="sr-only">Open user menu</span>
-                      <Image
-                        className="h-8 w-8 rounded-full border-2 border-slate-400"
-                        src={Profile}
-                        alt=""
-                      />
-                    </Menu.Button>
-                  </div>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                </a>
+              </div>
+              <div className="flex items-center">
+                <div className="flex items-center ml-3">
+                  <Menu as="div" className="relative ml-3">
+                    <div>
+                      <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                        <span className="sr-only">Open user menu</span>
+                        <Image
+                          className="h-8 w-8 rounded-full border-2 border-slate-400"
+                          src={Profile}
+                          alt=""
+                        />
+                      </Menu.Button>
+                    </div>
+
+                    <Menu.Items className="absolute right-0  mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
                           <a
@@ -82,24 +70,24 @@ const DashBoard = () => {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
+                            href="https://startupsahay.com/contact-us"
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
-                            Settings
+                            Contact Us
                           </a>
                         )}
                       </Menu.Item>
-                      {}
+
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
+                            onClick={signOut}
                             className={classNames(
                               active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+                              "block px-4 py-2 text-sm text-gray-700 cursor-pointer"
                             )}
                           >
                             Sign out
@@ -107,98 +95,126 @@ const DashBoard = () => {
                         )}
                       </Menu.Item>
                     </Menu.Items>
-                  </Transition>
-                </Menu>
-                <div
-                  className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
-                  id="dropdown-user"
-                >
-                  <div className="px-4 py-3" role="none">
-                    <p
-                      className="text-sm text-gray-900 dark:text-white"
-                      role="none"
-                    >
-                      Neil Sims
-                    </p>
-                    <p
-                      className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
-                      role="none"
-                    >
-                      neil.sims@flowbite.com
-                    </p>
+                  </Menu>
+                  <div
+                    className="z-50 hidden my-4 text-base list-none  divide-y  rounded shadow bg-gray-700 divide-gray-600"
+                    id="dropdown-user"
+                  >
+                    <div className="px-4 py-3" role="none">
+                      <p className="text-sm text-white" role="none">
+                        Neil Sims
+                      </p>
+                      <p
+                        className="text-sm font-medium  truncate text-gray-300"
+                        role="none"
+                      >
+                        neil.sims@flowbite.com
+                      </p>
+                    </div>
+                    <ul className="py-1" role="none">
+                      <li>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-600 hover:text-white"
+                          role="menuitem"
+                        >
+                          Dashboard
+                        </a>
+                      </li>
+
+                      <li>
+                        <button
+                          href="#"
+                          onClick={() => router.push("/login")}
+                          className="block px-4  py-2 text-sm text-gray-300 hover:bg-gray-600 hover:text-white"
+                          role="menuitem"
+                        >
+                          Sign out
+                        </button>
+                      </li>
+                    </ul>
                   </div>
-                  <ul className="py-1" role="none">
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Dashboard
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Settings
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Earnings
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Sign out
-                      </a>
-                    </li>
-                  </ul>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </nav>
-      <div
-        id="logo-sidebar"
-        className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
-        aria-label="Sidebar"
-      >
-        <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
-          <ul className="space-y-2">
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
+        </nav>
+
+        <div
+          id="logo-sidebar"
+          className="fixed top-0 left-0  w-64 h-screen pt-20 transition-transform -translate-x-full  border-r md:translate-x-0 bg-gray-800 border-gray-700"
+          aria-label="Sidebar"
+        >
+          <div className="h-full px-3 pb-4 overflow-y-auto bg-gray-800">
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="https://startupsahay.com"
+                  className="flex items-center p-2 text-base font-normal  rounded-lg text-white  hover:bg-gray-700"
                 >
-                  <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-                  <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-                </svg>
-                <span className="ml-3">Dashboard</span>
-              </a>
-            </li>
-          </ul>
+                  <svg
+                    aria-hidden="true"
+                    className="w-6 h-6 transition duration-75 text-gray-400 group-hover:text-white"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
+                    <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
+                  </svg>
+                  <span className="ml-3">Dashboard</span>
+                </a>
+              </li>
+            </ul>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="https://startupsahay.com/about-us"
+                  className="flex items-center p-2 text-base font-normal  rounded-lg text-white hover:bg-gray-700"
+                >
+                  <Image
+                    src={About}
+                    alt="avtar"
+                    className=" transition duration-75 text-gray-400 group-hover:text-white bg-gray-400 rounded-full "
+                  />
+                  <span className="ml-3">About Us</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
+      <section className="pt-28 bg-gray-800 w-full h-screen min-w-[320px]">
+        <div className="flex flex-col flex-wrap items-center  justify-center mx-auto    gap-5">
+          <div className=" flex flex-col text-center gap-5 pb-8 text-white">
+            <h1 className="text-4xl font-normal ">Personal info</h1>
+            <p>Information about you and your company</p>
+          </div>
+        </div>
+        <div className=" basic-info flex flex-col text-center    gap-5 border  rounded-md max-w-screen-md mx-auto p-5 bg-slate-300">
+          <div>
+            <h1 className="font-normal text-3xl">Basic info</h1>
+          </div>
+          <div className="flex flex-col gap-5 ">
+            <div className="flex  justify-around  border-b-2 sm:flex-col md:flex-row flex-wrap border-slate-400 max-w-screen-sm pb-3">
+              <h2 className="text-slate-600 ">CompanyName</h2>
+              <p className="text-lg">RumBum</p>
+            </div>
+            <div className="flex  justify-around     border-b-2 border-slate-400 max-w-screen-sm pb-3">
+              <h2 className="text-slate-600">yourEmail</h2>
+              <p className="text-lg  ">devang6314@gmail.com</p>
+            </div>
+            <div className="flex  justify-around border-b-2 border-slate-400 max-w-screen-sm pb-3">
+              <h2 className="text-slate-600">Address</h2>
+              <p className="text-lg">bla bla bla</p>
+            </div>
+            <div className="flex justify-around  max-w-screen-sm pb-3">
+              <h2 className="text-slate-600">Phone No.</h2>
+              <p className="text-lg">9999999999</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

@@ -1,7 +1,10 @@
 import clsx from "clsx";
 import React from "react";
 
-const Input = ({ name, id, type, autoComplete, placeholder, ...props }) => {
+const Input = ({ name, id, type, placeholder, ...props }) => {
+
+    
+
   return (
     <div>
       <label htmlFor={id} className="sr-only">
@@ -11,7 +14,7 @@ const Input = ({ name, id, type, autoComplete, placeholder, ...props }) => {
         id={id}
         name={name}
         type={type}
-        autoComplete={autoComplete}
+        required={true}
         placeholder={placeholder}
         {...props}
         className={clsx(
