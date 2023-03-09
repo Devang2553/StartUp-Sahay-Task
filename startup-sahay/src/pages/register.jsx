@@ -44,9 +44,9 @@ const SignUp = () => {
       } else {
       const data = { name,email, password,confirmPassword };
       await axiosInstance.post("/users/register", data );
+      router.push("/login");
       }
       // Redirect the user to the dashboard or home page
-      router.push("/login");
     } catch (error) {
       console.log(error);
     }
@@ -143,7 +143,7 @@ const SignUp = () => {
           </ButtonWithIcon>
           <ButtonWithIcon
             icon={Instagram}
-            class="   h-9  w-auto"
+            class="h-9  w-auto"
             className="bg-gradient-to-tr from-[#F6e05e] to-[#C026D3] w-full rounded-md pl-3"
           >
             Sign up with Instagram

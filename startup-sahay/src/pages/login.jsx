@@ -15,7 +15,7 @@ const Login = () => {
 
   function fbAuth() {
     window.location.href = "http://localhost:3004/api/auth/facebook";
-  }
+  }
 
   const handleClick = async (e) => {
     try {
@@ -25,13 +25,12 @@ const Login = () => {
 
       localStorage.setItem("token", JSON.stringify(res.data));
       // Redirect the user to the dashboard or home page
-      router.push("/DashBoard");
+      router.push("/StepperForm");
     } catch (error) {
+      alert("Password or email not valid");
       console.log(error);
     }
   };
-
-  
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -40,7 +39,6 @@ const Login = () => {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
-
 
   return (
     <div className="flex flex-col justify-center  h-screen items-center bg-slate-800">
@@ -69,7 +67,10 @@ const Login = () => {
               className="rounded-b-md"
             />
           </div>
-          <button type="submit" className="bg-blue-600 w-full rounded-md p-2 text-white">
+          <button
+            type="submit"
+            className="bg-blue-600 w-full rounded-md p-2 text-white"
+          >
             Login
           </button>
         </form>
@@ -82,14 +83,14 @@ const Login = () => {
             icon={Google}
             class="py-2"
             className="bg-slate-200 w-full rounded-md pl-3"
-            >
+          >
             Login with Google
           </ButtonWithIcon>
           <ButtonWithIcon
             icon={Fb}
             class="py-2"
             className="bg-[#1877F2] w-full rounded-md pl-3"
-            onClick={fbAuth}  
+            onClick={fbAuth}
           >
             Login with Facebook
           </ButtonWithIcon>

@@ -159,6 +159,7 @@ const StepOne = ({ nextStep }) => {
 const StepTwo = ({ previousStep }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
+    router.push("/DashBoard");
     // perform validation
   };
 
@@ -188,7 +189,7 @@ const StepTwo = ({ previousStep }) => {
             Previous
           </button>
 
-          <button type="submit" onClick={()=>router.push('/DashBoard')} className="rounded-md bg-blue-600 px-8  mt-4 text-white">
+          <button type="submit"  className="rounded-md bg-blue-600 px-8  mt-4 text-white">
             Submit
           </button>
         </div>
