@@ -210,7 +210,10 @@ const StepTwo = ({ previousStep }) => {
     <div className="flex flex-col p-12 bg-slate-800">
 
       <form
+<<<<<<< Updated upstream
       
+=======
+>>>>>>> Stashed changes
       action="/api/form" method="post"
         onSubmit={handleSubmit}
         className="border-2  max-w-xl mx-auto p-6 rounded-lg bg-slate-300  flex flex-col px-20"

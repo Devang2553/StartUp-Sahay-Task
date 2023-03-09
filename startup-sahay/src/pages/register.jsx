@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-<<<<<<< Updated upstream
 import { useRouter } from "next/router";
 
 // passport.use(new GoogleStrategy({
@@ -18,18 +17,6 @@ import { useRouter } from "next/router";
 //   // You can save the user data to your database or use it as needed
 //   return cb(null, profile);
 // }));
-=======
-
-passport.use(new GoogleStrategy({
-  clientID: "937645517026-vp7n8cvd78dg5jqvb4krmolkdkivdul8.apps.googleusercontent.com",
-  clientSecret: "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",
-  callbackURL: "http://localhost:3000/auth/google/callback"
-},
-function(accessToken, refreshToken, profile, cb) {
-  // You can save the user data to your database or use it as needed
-  return cb(null, profile);
-}));
->>>>>>> Stashed changes
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -75,7 +62,6 @@ const SignUp = () => {
 
   // history("/")
 
-<<<<<<< Updated upstream
   // function handleLogin() {
   //   axios.get('/auth/google')
   //     .then(res => {
@@ -88,17 +74,6 @@ const SignUp = () => {
 
 
 
-=======
-  function handleLogin() {
-    axios.get('/auth/google')
-      .then(res => {
-        window.location.href = res.data.url;
-      })
-      .catch(err => {
-        setError(err.response.data);
-      });
-  }
->>>>>>> Stashed changes
 
   return (
     <div className="flex flex-col justify-center  h-screen items-center bg-slate-800">
@@ -159,11 +134,7 @@ const SignUp = () => {
         <div className="flex-col flex gap-2 ">
           <button onClick={()=>navigate.push("http://localhost:3000/api/google")}>Submit</button>
           <ButtonWithIcon
-<<<<<<< Updated upstream
                 
-=======
-                onClick={handleLogin}
->>>>>>> Stashed changes
 
           
             icon={
