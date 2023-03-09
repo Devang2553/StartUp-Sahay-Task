@@ -1,5 +1,7 @@
 import clsx from "clsx";
+import Image from "next/image";
 import React from "react";
+
 
 const ButtonWithIcon = (props) => {
   return (
@@ -9,7 +11,7 @@ const ButtonWithIcon = (props) => {
         [props.className]: !!props.className,
       })}
     >
-      {props.icon}
+      <Image src={props.icon} alt="Image" className={props.class}/>
       {props.children}
     </button>
   );
