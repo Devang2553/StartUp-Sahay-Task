@@ -7,7 +7,7 @@ const Inputtag = ({ label, placeholder, type, onClick,value,onChange,name }) => 
         <label className="py-4">{label}</label>
         <input
           placeholder={placeholder}
-          className=" border-black rounded-md px-10 py-2 w-96"
+          className=" border-black rounded-md px-10 py-2 w-[500px]"
           type={type}
           onClick={onClick}
           value={value}
