@@ -1,12 +1,31 @@
+
 import React, { useState } from "react";
 import ButtonWithIcon from "../Components/buttonWithIcon";
 import Input from "../Components/input";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import passport from 'passport';
+import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
+import { useRouter } from "next/router";
+
+// passport.use(new GoogleStrategy({
+//   clientID: "937645517026-vp7n8cvd78dg5jqvb4krmolkdkivdul8.apps.googleusercontent.com",
+//   clientSecret: "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",
+//   callbackURL: "http://localhost:3000/auth/google/callback"
+// },
+// function(accessToken, refreshToken, profile, cb) {
+//   // You can save the user data to your database or use it as needed
+//   return cb(null, profile);
+// }));
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const navigate = useRouter()
+
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -38,6 +57,23 @@ const SignUp = () => {
       console.log(formData);
     }
   };
+  const [error, setError] = useState(null);
+  // let history = useNavigate();
+
+  // history("/")
+
+  // function handleLogin() {
+  //   axios.get('/auth/google')
+  //     .then(res => {
+  //       window.location.href = res.data.url;
+  //     })
+  //     .catch(err => {
+  //       setError(err.response.data);
+  //     });
+  // }
+
+
+
 
   return (
     <div className="flex flex-col justify-center  h-screen items-center bg-slate-800">
@@ -96,8 +132,13 @@ const SignUp = () => {
         </form>
 
         <div className="flex-col flex gap-2 ">
+          <button onClick={()=>navigate.push("http://localhost:3000/api/google")}>Submit</button>
           <ButtonWithIcon
+                
+
+          
             icon={
+
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 48 48"
@@ -121,9 +162,12 @@ const SignUp = () => {
                   fill="#1976D2"
                   d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
                 />
-              </svg>
+              </svg>              
+              
             }
-            className="bg-slate-200 w-full rounded-md pl-3"
+            className="bg-slate-200 w-full rounded-md pl-3"            
+            
+            
           >
             Sign up with Google
           </ButtonWithIcon>
@@ -158,6 +202,7 @@ const SignUp = () => {
               </svg>
             }
             className="bg-[#1877F2] w-full rounded-md pl-3"
+
           >
             Sign up with Facebook
           </ButtonWithIcon>

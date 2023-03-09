@@ -9,14 +9,15 @@ const DrpStep = ({
   option5,
   option6,
   option7,
-  onChange
+  onChange,
+  name
 }) => {
   return (
     <div className="flex flex-col pt-4 border-b-2 pb-4 border-slate-400 ">
       <p className="py-4">{p}</p>
 
       <form>
-        <select name="Drop" id="Drop" className="w-96 rounded-md p-2" required={true} onChange={onChange}>
+        <select name={name} id="Drop" className="w-96 rounded-md p-2" required={true} onChange={onChange}>
           <option value="1">{option1}</option>
           <option value="2">{option2}</option>
           <option value="3">{option3}</option>
