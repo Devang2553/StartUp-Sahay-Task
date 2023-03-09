@@ -59,7 +59,7 @@ const handleSubmit = async (event) => {
     <form
     action="/api/form" method="post"
     onSubmit={handleSubmit}
-      className="border-2 max-w-xl mx-auto p-6 rounded-lg bg-slate-300  flex flex-col px-20 font-medium text-slate-600"
+      className="border-2 max-w-2xl mx-auto p-6 rounded-lg bg-slate-300  flex flex-col px-20 font-medium text-slate-600"
     >
     <h1 className="flex  font-bold text-2xl text-black border-b-4 w-fit border-slate-800">Step:1</h1>
 
@@ -171,7 +171,7 @@ const handleSubmit = async (event) => {
 
         <div className="flex justify-center   text-lg font-serif flex-row gap-3">
        
-          <button type="submit" className="rounded-md bg-blue-600 px-8  mt-4 text-white py-2">
+          <button type="submit" className="rounded-md bg-blue-600 px-10  mt-4 text-white py-2">
             Submit
           </button>
 </div>
