@@ -11,6 +11,12 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const router = useRouter();
+
+  function fbAuth() {
+    window.location.href = "http://localhost:3004/api/auth/facebook";
+  }
+
   const handleClick = async (e) => {
     try {
       e.preventDefault();
@@ -25,7 +31,7 @@ const Login = () => {
     }
   };
 
-  const router = useRouter();
+  
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -83,13 +89,14 @@ const Login = () => {
             icon={Google}
             class="py-2"
             className="bg-slate-200 w-full rounded-md pl-3"
-          >
+            >
             Login with Google
           </ButtonWithIcon>
           <ButtonWithIcon
             icon={Fb}
             class="py-2"
             className="bg-[#1877F2] w-full rounded-md pl-3"
+            onClick={fbAuth}  
           >
             Login with Facebook
           </ButtonWithIcon>

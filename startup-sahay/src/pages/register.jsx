@@ -5,12 +5,17 @@ import Input from "../Components/input";
 import Fb from "../../public/fb.svg";
 import Google from "../../public/google.svg";
 import Instagram from "../../public/insta.svg";
+import axiosInstance from "@/utils/axiosInstance";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  function fbAuth() {
+    window.location.href = "http://localhost:3001/api/auth/facebook";
+  }
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -28,8 +33,9 @@ const SignUp = () => {
     setConfirmPassword(event.target.value);
   };
 
-  const router=useRouter();
+  const router = useRouter();
 
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
@@ -43,6 +49,9 @@ const SignUp = () => {
       };
       console.log(formData);
     }
+    // const data = {name, email, password,confirmPassword };
+    //   await axiosInstance.post("/users/login", { data });
+    // router.push("/login");
   };
 
   return (
@@ -53,9 +62,8 @@ const SignUp = () => {
           <div className="flex flex-col gap-1">
             <Input
               id="name"
-              name="name"
+              name="username"
               type="text"
-              autoComplete="name"
               placeholder="name"
               value={username}
               onChange={handleUsernameChange}
@@ -63,34 +71,31 @@ const SignUp = () => {
             />
             <Input
               id="email-address"
-              name="email"
+              name="userEmail"
               type="email"
-              autoComplete="email"
               placeholder="Email address"
               value={email}
               onChange={handleEmailChange}
             />
             <Input
               id="password"
-              name="password"
+              name="userPassword"
               type="password"
-              autoComplete="new-password"
               placeholder="Password"
               value={password}
               onChange={handlePasswordChange}
             />
             <Input
               id="confirm-password"
-              name="confirmPassword"
+              name="userConfirmPassword"
               type="password"
-              autoComplete="new-password"
               placeholder="Confirm Password"
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
               className="rounded-b-md"
             />
           </div>
-          <button type="submit" onClick={handleSubmit} className="bg-blue-600 w-full rounded-md p-2">
+          <button type="submit" onClick={()=> router.push('/login')} className="bg-blue-600 w-full rounded-md p-2">
             <p className="text-white">Sign Up</p>
           </button>
           <a
@@ -103,16 +108,17 @@ const SignUp = () => {
 
         <div className="flex-col flex gap-2 ">
           <ButtonWithIcon
-           icon={Google}
-           class="py-2"
+            icon={Google}
+            class="py-2"
             className="bg-slate-200 w-full rounded-md pl-3"
           >
             Sign up with Google
           </ButtonWithIcon>
           <ButtonWithIcon
-           icon={Fb}
-           class="py-2"
+            icon={Fb}
+            class="py-2"
             className="bg-[#1877F2] w-full rounded-md pl-3"
+            onClick={fbAuth}
           >
             Sign up with Facebook
           </ButtonWithIcon>

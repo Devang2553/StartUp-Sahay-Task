@@ -9,8 +9,23 @@ import { useRouter } from "next/router";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-
 const DashBoard = () => {
+
+
+const signOut= () => {
+  localStorage.removeItem('token');
+
+  if (!localStorage.getItem('token')) {
+    // If the token is not present, redirect the user to the sign-in page
+    window.location.href = '/login';
+  }
+
+  
+
+  
+
+}
+
   const router=useRouter();
   return (
     <div>
@@ -81,15 +96,16 @@ const DashBoard = () => {
                       {}
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#"
+                          <button
+                            onClick={signOut}
+                          
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
                             Sign out
-                          </a>
+                          </button>
                         )}
                       </Menu.Item>
                     </Menu.Items>
