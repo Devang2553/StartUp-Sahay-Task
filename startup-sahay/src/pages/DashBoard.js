@@ -1,45 +1,31 @@
 import { Fragment, useState } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Menu, Transition } from "@headlessui/react";
 import Profile from "../../public/avatarr.svg";
+import About from "../../public/aboutus.svg";
 import Logo from "../../public/logo.png";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const DashBoard = () => {
+  const router=useRouter();
   return (
+    <div>
     <div>
       <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start">
-              <button
-                type="button"
-                className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-              >
-                <span className="sr-only">Open sidebar</span>
-                <svg
-                  className="w-6 h-6"
-                  aria-hidden="true"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    clipRule="evenodd"
-                    fillRule="evenodd"
-                    d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
-                  />
-                </svg>
-              </button>
-              <a href="https://flowbite.com" className="flex ml-2 md:mr-24">
+             
+              <a href="https://startupsahay.com" className="flex ml-2 md:mr-24">
                 <Image
                   src={Logo}
                   className="h-8 w-auto mr-3 bg-white"
                   alt="FlowBite Logo"
+                  priority="low"
                 />
               </a>
             </div>
@@ -65,7 +51,7 @@ const DashBoard = () => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0  mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
                           <a
@@ -156,13 +142,14 @@ const DashBoard = () => {
                       </a>
                     </li>
                     <li>
-                      <a
+                      <button
                         href="#"
+                        onClick={()=>router.push('/login')}
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         role="menuitem"
                       >
                         Sign out
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </div>
@@ -171,9 +158,11 @@ const DashBoard = () => {
           </div>
         </div>
       </nav>
+
+
       <div
         id="logo-sidebar"
-        className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        className="fixed top-0 left-0  w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
         aria-label="Sidebar"
       >
         <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
@@ -197,9 +186,55 @@ const DashBoard = () => {
               </a>
             </li>
           </ul>
+          <ul className="space-y-2">
+            <li>
+              <a
+                href="https://startupsahay.com"
+                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                <Image  src={About}  alt="avtar" className="text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white bg-gray-400 rounded-full "/>
+                <span className="ml-3">About Us</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
+    <div className='pt-28 bg-gray-800 w-auto h-screen'>
+        <div className='flex flex-col items-center justify-center  gap-5'>
+            <div className=' flex flex-col text-center gap-5 pb-8 text-white'>
+              <h1  className='text-4xl font-normal '>Personal info</h1>
+            <p>Information about you and your company</p>
+              </div>
+        </div>
+        <div className=' basic-info flex flex-col gap-5 border  rounded-md max-w-screen-md mx-auto p-5 bg-slate-300'>
+            <div>
+            <h1 className='font-normal text-3xl'>Basic info</h1>
+            </div>
+            <div className='flex flex-col gap-5'>
+            <div  className='flex gap-36 border-b-2 border-slate-400 max-w-screen-sm pb-3'>
+              <h2 className='text-slate-600'>CompanyName</h2>
+              <p className='text-lg'>RumBum</p>
+            </div >
+            <div className='flex gap-44 border-b-2 border-slate-400 max-w-screen-sm pb-3'>
+              <h2 className='text-slate-600'>yourEmail</h2>
+              <p className='text-lg'>devang6314@gmail.com</p>
+            </div>
+            <div className='flex gap-48 border-b-2 border-slate-400 max-w-screen-sm pb-3'>
+              <h2 className='text-slate-600'>Address</h2>
+              <p className='text-lg'>bla bla bla</p>
+            </div>
+            <div className='flex gap-44  max-w-screen-sm pb-3'>
+              <h2 className='text-slate-600'>Phone No.</h2>
+              <p className='text-lg'>9999999999</p>
+            </div>
+           
+        
+
+            </div>
+        </div>
+    </div>
+      </div>
   );
 };
 
