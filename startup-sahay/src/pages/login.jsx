@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import ButtonWithIcon from "../Components/buttonWithIcon";
-import Input from "../Components/input";
+import Input from "../Components/Inputtag";
 import Fb from "../../public/fb.svg";
 import Google from "../../public/google.svg";
 import Instagram from "../../public/instagram.svg";
@@ -22,6 +22,7 @@ const Login = () => {
       e.preventDefault();
       const data = { email, password };
       const res = await axiosAuth.post("/users/login", { data });
+      
 
       localStorage.setItem("token", JSON.stringify(res.data));
       // Redirect the user to the dashboard or home page
@@ -68,16 +69,21 @@ const Login = () => {
             />
           </div>
           <button
+          
             type="submit"
             className="bg-blue-600 w-full rounded-md p-2 text-white"
           >
             Login
           </button>
         </form>
-
-        <a href="" className="text-center font-light hover:">
+          <div className="flex justify-between">
+          <a href="#" onClick={()=>router.push('/register')} className="text-center font-light ">
+          Not register?<span className="font-normal" >Click here</span>
+        </a>
+        <a onClick={()=>router.push('/forgotPassword')} href="#" className="text-center font-light ">
           Forgot your password?
         </a>
+        </div>
         <div className="flex-col flex gap-2 ">
           <ButtonWithIcon
             icon={Google}
@@ -89,7 +95,7 @@ const Login = () => {
           <ButtonWithIcon
             icon={Fb}
             class="py-2"
-            className="bg-[#1877F2] w-full rounded-md pl-3"
+            className="bg-blue-500 w-full rounded-md pl-3"
             onClick={fbAuth}
           >
             Login with Facebook

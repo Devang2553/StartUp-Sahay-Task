@@ -1,11 +1,12 @@
 import { useRouter } from "next/router";
-import Textarea from "@/Components/Textarea";
+import Textarea from "@/Components/TextArea";
 import Inputtag from "@/Components/Inputtag";
 
 import React, { useState } from "react";
 import RadioStep from "@/Components/RadioStep";
-import CheakStep from "@/Components/CheakStep";
+import CheakStep from "@/Components/Checkbox";
 import DrpStep from "@/Components/DrpStep";
+import axiosInstance from "@/utils/axiosInstance";
 
 import axios from 'axios';
 
@@ -31,7 +32,6 @@ handleSubmit(formData);
 const StepperForm = () => {
   const [step, setStep] = useState(1);
 
-
   const nextStep = () => {
     setStep(step + 1);
   };
@@ -55,7 +55,9 @@ const StepperForm = () => {
 
   return (
     <div>
-      <h1 className="flex justify-center font-bold text-3xl bg-slate-800 text-white  pt-9">Stepper Form</h1>
+      <h1 className="flex justify-center font-bold text-3xl bg-slate-800 text-white  pt-9">
+        Stepper Form
+      </h1>
 
       {renderStep()}
     </div>
@@ -64,28 +66,52 @@ const StepperForm = () => {
 
 const StepOne = ({ nextStep }) => {
   const [formData, setFormData] = useState({});
+  const [name, setName] = useState("");
+  const [title, setTitle] = useState("");
+  const [website, setWebsite] = useState("");
+  const [industry, setIndustry] = useState("");
+  const [summary, setSummary] = useState("");
+  const [revenue, setRevenue] = useState("");
+  const [money, setMoney] = useState("");
+  const [address, setAddress] = useState("");
+  const [country, setCountry] = useState("");
+  const [available, setAvailble] = useState("");
+  const [generateRevenue, setGenerateRevenue] = useState("");
+  const [stage, setStage] = useState("");
+  const [structure, setStrucuture] = useState("");
+  const [pitch, setPitch] = useState("");
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(formData);  
-    // perform validation
+  const handleSubmit1 = async (event) => {
+    try {
+      event.preventDefault();
+      // const data={name,title,website,industry,summary,revenue,money,address,country,available,generateRevenue,stage,structure,pitch,pastInvestment,communitySize,raisedMoney,runaway}
+      const data = { formData };
+      console.log(data, "FormData");
+      const response = await axiosInstance.post("/step1/api", formData);
+      JSON.stringify(response.data);
+      // router.push("/DashBoard");
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
     nextStep();
   };
 
   return (
     <div className=" flex flex-col p-12 bg-slate-800">
-
       <form
       action="/api/form" method="post"
         onSubmit={handleSubmit}
         className="border-2 max-w-xl mx-auto p-6 rounded-lg bg-slate-300  flex flex-col px-20 font-medium text-slate-600"
       >
-      <h1 className="flex  font-bold text-2xl text-black border-b-4 w-fit border-slate-800">Step:1</h1>
+        <h1 className="flex  font-bold text-2xl text-black border-b-4 w-fit border-slate-800">
+          Step:1
+        </h1>
 
         <Inputtag
           type={"text"}
@@ -129,6 +155,7 @@ const StepOne = ({ nextStep }) => {
         />
         <Textarea
           label={"Company Address:"}
+          
           placeholder={"Enter Your Company Address"}
           onchange={handleInputChange}
           name={"address"}
@@ -198,17 +225,33 @@ const StepOne = ({ nextStep }) => {
 };
 
 const StepTwo = ({ previousStep }) => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    router.push("/DashBoard");
-    // perform validation
+  const [formData, setFormData] = useState({});
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  const router=useRouter();
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      // const data={name,title,website,industry,summary,revenue,money,address,country,available,generateRevenue,stage,structure,pitch,pastInvestment,communitySize,raisedMoney,runaway}
+      const data = { formData };
+      console.log(data);
+      const response = await axiosInstance.post("/step2/api", data);
+      JSON.stringify(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+    router.push("/DashBoard");
+
+  };
+
+  const router = useRouter();
 
   return (
     <div className="flex flex-col p-12 bg-slate-800">
-
       <form
       
       action="/api/form" method="post"
@@ -222,6 +265,29 @@ const StepTwo = ({ previousStep }) => {
           <Inputtag type={"number"} label={"How would you like to  raise on Republic? "} name={"raisedMoney"} />
           <Inputtag type={"number"} label={"How would you characterize your Company's runway?(in months) "}  name={"runaway"}/>
 
+        <RadioStep
+          p={"My Company has run an Investment Campaign in past?"}
+          label={"Yes"}
+          label2={"No"}
+        />
+        <DrpStep
+          option1={"0-5k"}
+          option2={"5k-10k"}
+          option3={"50k+"}
+          p={"What's the Rough size of your Community?"}
+        />
+        <Inputtag
+          type={"number"}
+          label={"How would you like to  raise on Republic? "}
+          onChange={handleInputChange}
+        />
+        <Inputtag
+          type={"number"}
+          label={
+            "How would you characterize your Company's runway?(in months) "
+          }
+          onChange={handleInputChange}
+        />
 
           <div className="flex justify-center   text-lg font-serif flex-row gap-3">
             <button
@@ -262,7 +328,7 @@ const StepThree = ({ previousStep }) => {
       <button type="button" onClick={previousStep}>
         Previous
       </button>
-      <button type="submit" >Submit</button>
+      <button type="submit">Submit</button>
     </form>
   );
 };

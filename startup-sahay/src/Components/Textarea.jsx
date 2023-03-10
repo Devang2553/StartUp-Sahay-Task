@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Textarea = ({desc ,label,placeholder,name}) => {
   return (
@@ -12,7 +12,7 @@ const Textarea = ({desc ,label,placeholder,name}) => {
         </textarea>
         </form>
     </div>
-  )
-}
+  );
+};
 
-export default Textarea
+export default Textarea;

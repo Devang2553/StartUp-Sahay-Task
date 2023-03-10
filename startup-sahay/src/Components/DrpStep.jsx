@@ -27,8 +27,9 @@ const DrpStep = ({
 
           <option value="4">{option7}</option>
         </select>
-      </form>
+      </div>
     </div>
+    
   );
 };
 

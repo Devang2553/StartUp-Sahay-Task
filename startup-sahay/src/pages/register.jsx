@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 import React, { useState } from "react";
 import ButtonWithIcon from "../Components/buttonWithIcon";
@@ -18,18 +17,12 @@ import { useRouter } from "next/router";
 //   // You can save the user data to your database or use it as needed
 //   return cb(null, profile);
 // }));
-=======
-
-passport.use(new GoogleStrategy({
-  clientID: "937645517026-vp7n8cvd78dg5jqvb4krmolkdkivdul8.apps.googleusercontent.com",
-  clientSecret: "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",
-  callbackURL: "http://localhost:3000/auth/google/callback"
-},
-function(accessToken, refreshToken, profile, cb) {
-  // You can save the user data to your database or use it as needed
-  return cb(null, profile);
-}));
->>>>>>> Stashed changes
+import Input from "../Components/Inputtag";
+import Fb from "../../public/fb.svg";
+import Google from "../../public/google.svg";
+import Instagram from "../../public/instagram.svg";
+import axiosInstance from "@/utils/axiosInstance";
+>>>>>>> 54753cf2e01e2ad3dcfd2678c42cb088355fdf04
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -37,14 +30,8 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-<<<<<<< HEAD
   const navigate = useRouter()
 
-=======
-  function fbAuth() {
-    window.location.href = "http://localhost:3001/api/auth/facebook";
-  }
->>>>>>> 908cba09ae8f7b1c5b11142bf7430ece3edee126
 
   const handleUsernameChange = (event) => {
     setName(event.target.value);
@@ -64,16 +51,15 @@ const SignUp = () => {
 
   const router = useRouter();
 
-
   const handleClick = async (e) => {
     try {
       e.preventDefault();
       if (password !== confirmPassword) {
         alert("Passwords don't match");
       } else {
-      const data = { name,email, password,confirmPassword };
-      await axiosInstance.post("/users/register", data );
-      router.push("/login");
+        const data = { name, email, password, confirmPassword };
+        await axiosInstance.post("/users/register", data);
+        router.push("/login");
       }
       // Redirect the user to the dashboard or home page
     } catch (error) {
@@ -81,9 +67,6 @@ const SignUp = () => {
     }
   };
 
-
-
-  
   const handleSubmit = (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
@@ -160,22 +143,21 @@ const SignUp = () => {
               className="rounded-b-md"
             />
           </div>
-          <button type="submit"  className="bg-blue-600 w-full rounded-md p-2">
+          <button type="submit" className="bg-blue-600 w-full rounded-md p-2">
             <p className="text-white">Sign Up</p>
           </button>
         </form>
-          <a
-            href=""
-            className="text-center font-normal text-gray-600 hover:text-blue-900 pb-1"
-          >
-            Forgot your password?
-          </a>
+        <a
+          href="#"
+          onClick={()=>router.push('/login')}
+          className="text-center font-normal text-gray-600 hover:text-blue-900 pb-1"
+        >
+          Already register ?<span className="font-bold"> Click here</span>
+        </a>
 
         <div className="flex-col flex gap-2 ">
           <button onClick={()=>navigate.push("http://localhost:3000/api/google")}>Submit</button>
           <ButtonWithIcon
-<<<<<<< HEAD
-<<<<<<< Updated upstream
                 
 
           
@@ -210,11 +192,6 @@ const SignUp = () => {
             className="bg-slate-200 w-full rounded-md pl-3"            
             
             
-=======
-            icon={Google}
-            class="py-2"
-            className="bg-slate-200 w-full rounded-md pl-3"
->>>>>>> 908cba09ae8f7b1c5b11142bf7430ece3edee126
           >
             Sign up with Google
           </ButtonWithIcon>
@@ -222,11 +199,8 @@ const SignUp = () => {
             icon={Fb}
             class="py-2"
             className="bg-[#1877F2] w-full rounded-md pl-3"
-<<<<<<< HEAD
-
-=======
+            className="bg-blue-500 w-full rounded-md pl-3"
             onClick={fbAuth}
->>>>>>> 908cba09ae8f7b1c5b11142bf7430ece3edee126
           >
             Sign up with Facebook
           </ButtonWithIcon>
