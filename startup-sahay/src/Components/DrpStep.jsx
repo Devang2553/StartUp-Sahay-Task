@@ -15,8 +15,8 @@ const DrpStep = ({
     <div className="flex flex-col pt-4 border-b-2 pb-4 border-slate-400 ">
       <p className="py-4">{p}</p>
 
-      <form>
-        <select name="Drop" id="Drop" className="w-[500px] rounded-md p-2" required={true} onChange={onChange}>
+      <div>
+        <select name="Drop" id="Drop" className="w-auto rounded-md p-2" required={true} onChange={onChange}>
           <option value="1">{option1}</option>
           <option value="2">{option2}</option>
           <option value="3">{option3}</option>
@@ -26,7 +26,7 @@ const DrpStep = ({
 
           <option value="4">{option7}</option>
         </select>
-      </form>
+      </div>
     </div>
   );
 };

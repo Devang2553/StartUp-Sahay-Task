@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import ButtonWithIcon from "../Components/buttonWithIcon";
-import Input from "../Components/input";
+import Input from "../Components/Inputtag";
 import Fb from "../../public/fb.svg";
 import Google from "../../public/google.svg";
 import Instagram from "../../public/instagram.svg";
@@ -35,16 +35,15 @@ const SignUp = () => {
 
   const router = useRouter();
 
-
   const handleClick = async (e) => {
     try {
       e.preventDefault();
       if (password !== confirmPassword) {
         alert("Passwords don't match");
       } else {
-      const data = { name,email, password,confirmPassword };
-      await axiosInstance.post("/users/register", data );
-      router.push("/login");
+        const data = { name, email, password, confirmPassword };
+        await axiosInstance.post("/users/register", data);
+        router.push("/login");
       }
       // Redirect the user to the dashboard or home page
     } catch (error) {
@@ -52,9 +51,6 @@ const SignUp = () => {
     }
   };
 
-
-
-  
   const handleSubmit = (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
@@ -114,16 +110,17 @@ const SignUp = () => {
               className="rounded-b-md"
             />
           </div>
-          <button type="submit"  className="bg-blue-600 w-full rounded-md p-2">
+          <button type="submit" className="bg-blue-600 w-full rounded-md p-2">
             <p className="text-white">Sign Up</p>
           </button>
         </form>
-          <a
-            href=""
-            className="text-center font-normal text-gray-600 hover:text-blue-900 pb-1"
-          >
-            Forgot your password?
-          </a>
+        <a
+          href="#"
+          onClick={()=>router.push('/login')}
+          className="text-center font-normal text-gray-600 hover:text-blue-900 pb-1"
+        >
+          Already register ?<span className="font-bold"> Click here</span>
+        </a>
 
         <div className="flex-col flex gap-2 ">
           <ButtonWithIcon
@@ -136,7 +133,7 @@ const SignUp = () => {
           <ButtonWithIcon
             icon={Fb}
             class="py-2"
-            className="bg-[#1877F2] w-full rounded-md pl-3"
+            className="bg-blue-500 w-full rounded-md pl-3"
             onClick={fbAuth}
           >
             Sign up with Facebook
