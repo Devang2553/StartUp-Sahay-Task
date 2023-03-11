@@ -48,7 +48,7 @@ const ForgotPassword = () => {
             href=""
             className="text-center font-normal text-gray-600 hover:text-blue-900 pb-1"
           >
-            Can't Reset your Password?
+            Can not Reset your Password?
           </a>
         </form>
         <div className="flex-col flex gap-2 ">

@@ -6,7 +6,6 @@ import Fb from "../../public/fb.svg";
 import Google from "../../public/google.svg";
 import Instagram from "../../public/instagram.svg";
 import axiosInstance, { axiosAuth } from "@/utils/axiosInstance";
-
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -42,7 +41,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center  h-screen items-center bg-slate-800">
+    <div className="main flex flex-col justify-center  h-screen items-center bg-slate-800">
       <div className="w-1/3 min-w-[300px] bg-slate-300 border-2 rounded-xl p-5  flex-col flex gap-2">
         <form onSubmit={handleClick} className="flex-col flex gap-4">
           <h2 className="font-bold text-2xl">Login</h2>
