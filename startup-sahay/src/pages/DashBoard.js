@@ -217,7 +217,7 @@ const DashBoard = () => {
             <h1 className="font-normal text-3xl">Basic info</h1>
           </div>
           <div className="flex flex-col gap-5 ">
-            <div className="flex  gap-36  border-b-2 sm:flex-col md:flex-row flex-wrap border-slate-400 max-w-screen-sm pb-3">
+            <div className="flex  gap-36  border-b-2  md:flex-row flex-wrap border-slate-400 max-w-screen-sm pb-3">
               <h2 className="text-slate-600 ">CompanyName</h2>
               <p className="text-lg">{userData?.name}</p>
             </div>

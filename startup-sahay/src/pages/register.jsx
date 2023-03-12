@@ -6,6 +6,7 @@ import Fb from "../../public/fb.svg";
 import Google from "../../public/google.svg";
 import Instagram from "../../public/instagram.svg";
 import axiosInstance from "@/utils/axiosInstance";
+import Link from "next/link";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -43,7 +44,7 @@ const SignUp = () => {
       } else {
         const data = { name, email, password, confirmPassword };
         await axiosInstance.post("/users/register", data);
-        router.push("/login");
+        router.push("/RegisterDone");
       }
       // Redirect the user to the dashboard or home page
     } catch (error) {
@@ -78,6 +79,7 @@ const SignUp = () => {
             <Input
               id="name"
               name="name"
+              autoComplete={"name"}
               type="text"
               placeholder="name"
               value={name}
@@ -88,6 +90,8 @@ const SignUp = () => {
               id="email-address"
               name="Email"
               type="email"
+              autoComplete={"email"}
+
               placeholder="Email address"
               value={email}
               onChange={handleEmailChange}
@@ -96,6 +100,7 @@ const SignUp = () => {
               id="password"
               name="password"
               type="password"
+              autoComplete={"password"}
               placeholder="Password"
               value={password}
               onChange={handlePasswordChange}
@@ -103,6 +108,7 @@ const SignUp = () => {
             <Input
               id="confirm-password"
               name="confirmPassword"
+              autoComplete={"confirmPassword"}
               type="password"
               placeholder="Confirm Password"
               value={confirmPassword}
@@ -110,17 +116,17 @@ const SignUp = () => {
               className="rounded-b-md"
             />
           </div>
-          <button type="submit" className="bg-blue-600 w-full rounded-md p-2">
+          <button type="submit"  className="bg-blue-600 w-full rounded-md p-2">
             <p className="text-white">Sign Up</p>
           </button>
         </form>
-        <a
-          href="#"
-          onClick={()=>router.push('/login')}
+        <Link
+          href="/login"
+          
           className="text-center font-normal text-gray-600 hover:text-blue-900 pb-1"
         >
           Already register ?<span className="font-bold"> Click here</span>
-        </a>
+        </Link>
 
         <div className="flex-col flex gap-2 ">
           <ButtonWithIcon

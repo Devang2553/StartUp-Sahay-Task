@@ -26,7 +26,7 @@ const Login = () => {
 
       localStorage.setItem("token", JSON.stringify(res.data));
       // Redirect the user to the dashboard or home page
-      router.push("/StepperForm");
+      router.push("/DashBoard");
     } catch (error) {
       alert("Password or email not valid");
       console.log(error);
