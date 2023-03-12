@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
       <meta name="description" content="Put your description here." />
       </Head>
-      <title> A brief, clear, informative, and unique title</title>
+      <title>StartUp Sahay</title>
       <body>
         <Main />
         <NextScript />

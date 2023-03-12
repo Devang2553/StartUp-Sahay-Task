@@ -93,45 +93,55 @@ const StepOne = ({ nextStep }) => {
 
         <Inputtag
           type={"text"}
-          label={"Company Name:"}
+          labal={"Company Name:"}
           placeholder={"Enter Your Company Name"}
           onChange={handleInputChange}
+          name={"name"}
         />
         <Inputtag
           type={"text"}
-          label={"Your Title:"}
+          labal={"Your Title:"}
           placeholder={"Enter Your Title"}
           onChange={handleInputChange}
+          name={"title"}
+
         />
         <Inputtag
           type={"text"}
-          label={"Website:"}
+          labal={"Website:"}
           placeholder={"Enter Your Website"}
           onChange={handleInputChange}
+          name={"website"}
+
         />
         <Inputtag
           type={"text"}
-          label={"Industry of Your Company:"}
+          labal={"Industry of Your Company:"}
           placeholder={"Enter Industry of Your Company"}
           onChange={handleInputChange}
+          name={"industry"}
+          
         />
-        <Textarea label={"Summary:"} placeholder={"Enter Your Summary"} />
-        <Textarea label={"Revenues:"} placeholder={"Enter Your Revenues"} />
+          
+        <Textarea label={"Summary:"} placeholder={"Enter Your Summary"} name={"summary"}   />
+        <Textarea label={"Revenues:"} placeholder={"Enter Your Revenues"} name={"revenue"} />
         <Inputtag
           type={"text"}
           placeholder={"write here.."}
           label={"How many Money has your Company received to date?"}
           onChange={handleInputChange}
+          name={"money"}
         />
         <Textarea
           label={"Company Address:"}
-          
+          name={"address"}
           placeholder={"Enter Your Company Address"}
           onChange={handleInputChange}
         />
         <Inputtag
           type={"text"}
-          label={"Your Country:"}
+          labal={"Your Country:"}
+          name={"country"}
           placeholder={"Enter Your Country "}
           onChange={handleInputChange}
           autoComplete={"Country"}
@@ -139,6 +149,7 @@ const StepOne = ({ nextStep }) => {
         <RadioStep
           label={"Yes"}
           label2={"No"}
+          name={"available"}
           p={"Is your Product available in Market ?(For Sale) "}
           onChange={handleInputChange}
         />
@@ -146,11 +157,13 @@ const StepOne = ({ nextStep }) => {
         <RadioStep
           label={"Yes"}
           label2={"No"}
+          name={"generateRevenue"}
           p={"Is your Company generating revenues?"}
           onChange={handleInputChange}
         />
         <CheakStep
           p={"Your Company Stage:"}
+          name={"stage"}
           label={"Prototype"}
           label2={"Validation"}
           label3={"MVP"}
@@ -161,6 +174,7 @@ const StepOne = ({ nextStep }) => {
 
         <DrpStep
           p={"How would you like to structure your raise on Republic?"}
+          name={"structure"}
           option1={"Safe"}
           option2={"Debt"}
           onChange={handleInputChange}
@@ -174,7 +188,8 @@ const StepOne = ({ nextStep }) => {
 
         <Inputtag
           type={"file"}
-          label={"Upload Your Pitches:"}
+          labal={"Upload Your Pitches:"}
+          name={"pitch"}
           placeholder={"Enter Your Country "}
           onChange={handleInputChange}
         />
@@ -228,6 +243,7 @@ const StepTwo = ({ previousStep }) => {
 
         <RadioStep
           p={"My Company has run an Investment Campaign in past?"}
+          name={"pastInvestment"}
           label={"Yes"}
           label2={"No"}
         />
@@ -235,15 +251,18 @@ const StepTwo = ({ previousStep }) => {
           option1={"0-5k"}
           option2={"5k-10k"}
           option3={"50k+"}
+          name={"communitySize"}
           p={"What's the Rough size of your Community?"}
         />
         <Inputtag
           type={"number"}
+          name={"raisedMoney"}
           label={"How would you like to  raise on Republic? "}
           onChange={handleInputChange}
         />
         <Inputtag
           type={"number"}
+          name={"runaway"}
           label={
             "How would you characterize your Company's runway?(in months) "
           }
