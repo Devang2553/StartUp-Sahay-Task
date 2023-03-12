@@ -33,8 +33,8 @@ const StepperForm = () => {
   };
 
   return (
-    <div>
-      <h1 className="flex justify-center font-bold text-3xl bg-slate-800 text-white  pt-9">
+    <div className=" min-w-min bg-slate-800 ">
+      <h1 className="flex justify-center min-w-min font-bold text-3xl  text-white  pt-9">
         Stepper Form
       </h1>
 
@@ -82,7 +82,7 @@ const StepOne = ({ nextStep }) => {
   };
 
   return (
-    <div className=" flex flex-col p-12 bg-slate-800">
+    <div className=" flex flex-col min-w-max   p-12 bg-slate-800">
       <form
         onSubmit={handleSubmit1}
         className="border-2 max-w-xl mx-auto p-6 rounded-lg bg-slate-300  flex flex-col px-20 font-medium text-slate-600"
@@ -119,6 +119,7 @@ const StepOne = ({ nextStep }) => {
         <Textarea label={"Revenues:"} placeholder={"Enter Your Revenues"} />
         <Inputtag
           type={"text"}
+          placeholder={"write here.."}
           label={"How many Money has your Company received to date?"}
           onChange={handleInputChange}
         />
@@ -168,6 +169,7 @@ const StepOne = ({ nextStep }) => {
           option5={"Token sale"}
           option6={"Ursae"}
           option7={"other"}
+          
         />
 
         <Inputtag
@@ -215,7 +217,7 @@ const StepTwo = ({ previousStep }) => {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col p-12 bg-slate-800">
+    <div className="flex flex-col p-12 h-[1024px] md:h-screen  min-w-min bg-slate-800 ">
       <form
         onSubmit={handleSubmit}
         className="border-2  max-w-xl mx-auto p-6 rounded-lg bg-slate-300  flex flex-col px-20"

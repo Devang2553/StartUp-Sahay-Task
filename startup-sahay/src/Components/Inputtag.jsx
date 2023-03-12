@@ -15,6 +15,7 @@ const Inputtag = ({ label, placeholder, type, onClick,value,onChange,autoComplet
           onChange={onChange}
           required={true}
           autoComplete={autoComplete}
+          
         ></input>
     </div>
   );
