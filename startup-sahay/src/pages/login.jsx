@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ButtonWithIcon from "../Components/buttonWithIcon";
 import Input from "../Components/Inputtag";
 import Fb from "../../public/fb.svg";
@@ -7,6 +7,8 @@ import Google from "../../public/google.svg";
 import Instagram from "../../public/instagram.svg";
 import axiosInstance, { axiosAuth } from "@/utils/axiosInstance";
 import Link from "next/link";
+
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,6 +19,8 @@ const Login = () => {
     window.location.href = "http://localhost:3004/api/auth/facebook";
   }
 
+  
+
   const handleClick = async (e) => {
     try {
       e.preventDefault();
@@ -24,7 +28,9 @@ const Login = () => {
       const res = await axiosAuth.post("/users/login", { data });
       
 
-      localStorage.setItem("token", JSON.stringify(res.data));
+      const token = localStorage.setItem("token", JSON.stringify(res.data));
+
+      
       // Redirect the user to the dashboard or home page
       router.push("/DashBoard");
     } catch (error) {
@@ -40,6 +46,17 @@ const Login = () => {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
+
+  // useEffect(() => {
+  //   const accessToken = localStorage.getItem('token');
+  //   if (accessToken) {
+  //     router.push('/Dashboard'); // redirect to dashboard if token exists
+  //   }
+  //   else{
+  //     router.push('/login'); // redirect to dashboard if token exists
+
+  //   }
+  // }, []);
 
   return (
     <div className="main flex flex-col justify-center  h-screen items-center bg-slate-800">

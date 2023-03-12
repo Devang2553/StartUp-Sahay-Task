@@ -1,16 +1,10 @@
 
 import React, { useState } from "react";
 import ButtonWithIcon from "../Components/buttonWithIcon";
-import Input from "../Components/input";
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import passport from 'passport';
-import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import { useRouter } from "next/router";
 
 import Input from "../Components/Inputtag";
 import Fb from "../../public/fb.svg";
-import Google from "../../public/google.svg";
 import Instagram from "../../public/instagram.svg";
 import axiosInstance from "@/utils/axiosInstance";
 import Link from "next/link";
@@ -195,7 +189,6 @@ const SignUp = () => {
             icon={Fb}
             class="py-2"
             className="bg-[#1877F2] w-full rounded-md pl-3"
-            onClick={fbAuth}
           >
             Sign up with Facebook
           </ButtonWithIcon>

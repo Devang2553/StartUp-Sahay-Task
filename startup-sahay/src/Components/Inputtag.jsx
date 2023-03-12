@@ -1,6 +1,6 @@
 import React from "react";
 
-const Inputtag = ({ label, placeholder, type, onClick,value,onChange,autoComplete }) => {
+const Inputtag = ({ label, placeholder, type, onClick,value,onChange,name }) => {
   return (
     <div  className="flex flex-col border-b-2 pb-4 border-slate-400 w-auto">
       
@@ -15,7 +15,6 @@ const Inputtag = ({ label, placeholder, type, onClick,value,onChange,autoComplet
           onChange={onChange}
           required={true}
         
-          autoComplete={autoComplete}
         ></input>
     </div>
   );

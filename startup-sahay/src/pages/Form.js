@@ -1,4 +1,4 @@
-import CheakStep from "@/Components/Checkbox";
+import CheakStep from "@/Components/CheakStep";
 import DrpStep from "@/Components/DrpStep";
 import Inputtag from "@/Components/Inputtag";
 import RadioStep from "@/Components/RadioStep";

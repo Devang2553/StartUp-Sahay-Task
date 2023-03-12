@@ -17,6 +17,8 @@ const DashBoard = () => {
   // const userId="64081717a01e96baac023828"
 
   useEffect(() => {
+  const accessToken = window.localStorage.getItem('token');
+  if(accessToken){
     const { user } = JSON.parse(window.localStorage.getItem("token"));
     console.log(user, "user");
     axiosInstance
@@ -26,11 +28,22 @@ const DashBoard = () => {
         console.log(res, "api response");
       })
       .catch((error) => console.error(error));
-  }, []);
+      // router.push('/Dashboard'); // redirect to dashboard if token exists
 
-  if (!userData) {
-    return <div>User not loged in</div>;
+
   }
+  if (userData) {
+    router.push("./privateRoute");
+  }
+  else{
+    router.push("./DashBoard")
+  }
+
+  }, []);
+    
+    
+
+  
 
   const signOut = () => {
     localStorage.removeItem("token");
@@ -236,5 +249,7 @@ const DashBoard = () => {
     </div>
   );
 };
+
+
 
 export default DashBoard;
