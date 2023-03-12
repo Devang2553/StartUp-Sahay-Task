@@ -44,7 +44,7 @@ const DashBoard = () => {
   return (
     <div>
       <div>
-        <nav className="fixed top-0 z-50 w-full  border-b  bg-gray-800 border-gray-700">
+        <nav className="fixed top-0 z-50 w-full  border-b  bg-gray-800 border-gray-700" >
           <div className="px-3 py-3 lg:px-5 lg:pl-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center justify-start">
@@ -59,6 +59,12 @@ const DashBoard = () => {
                     priority="low"
                   />
                 </a>
+              </div>
+              <div className="block lg:hidden">
+                <ul className="flex  text-white  gap-8 font-bold">
+                  <li>Dashboard</li>
+                  <li>About Us</li>
+                </ul>
               </div>
               <div className="flex items-center">
                 <div className="flex items-center ml-3">
@@ -121,17 +127,7 @@ const DashBoard = () => {
                     className="z-50 hidden my-4 text-base list-none  divide-y  rounded shadow bg-gray-700 divide-gray-600"
                     id="dropdown-user"
                   >
-                    <div className="px-4 py-3" role="none">
-                      <p className="text-sm text-white" role="none">
-                        Neil Sims
-                      </p>
-                      <p
-                        className="text-sm font-medium  truncate text-gray-300"
-                        role="none"
-                      >
-                        neil.sims@flowbite.com
-                      </p>
-                    </div>
+                   
                     <ul className="py-1" role="none">
                       <li>
                         <a
@@ -162,8 +158,9 @@ const DashBoard = () => {
         </nav>
 
         <div
+        title="slide-bar"
           id="logo-sidebar"
-          className="fixed top-0 left-0  w-64 h-screen pt-20 transition-transform -translate-x-full  border-r md:translate-x-0 bg-gray-800 border-gray-700"
+          className="fixed top-0 left-0  w-64 h-screen pt-20 transition-transform -translate-x-full  border-r lg:translate-x-0 bg-gray-800 border-gray-700"
           aria-label="Sidebar"
         >
           <div className="h-full px-3 pb-4 overflow-y-auto bg-gray-800">
@@ -205,7 +202,7 @@ const DashBoard = () => {
           </div>
         </div>
       </div>
-      <section className="pt-28 bg-gray-800 h-screen min-w-min ">
+      <section title="main-page" className="pt-28 bg-gray-800  h-[946px] md:h-screen min-w-min ">
         <div className="flex flex-col flex-wrap items-center w-full   justify-center mx-auto    gap-5">
           <div className=" flex flex-col text-center gap-5 pb-8 text-white">
             <h1 className="text-4xl font-normal ">Personal info</h1>

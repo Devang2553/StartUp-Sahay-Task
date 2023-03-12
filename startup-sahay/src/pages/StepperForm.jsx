@@ -54,8 +54,8 @@ const StepperForm = () => {
   };
 
   return (
-    <div>
-      <h1 className="flex justify-center font-bold text-3xl bg-slate-800 text-white  pt-9">
+    <div className=" min-w-min bg-slate-800 ">
+      <h1 className="flex justify-center min-w-min font-bold text-3xl  text-white  pt-9">
         Stepper Form
       </h1>
 
@@ -103,7 +103,7 @@ const StepOne = ({ nextStep }) => {
   };
 
   return (
-    <div className=" flex flex-col p-12 bg-slate-800">
+    <div className=" flex flex-col min-w-max   p-12 bg-slate-800">
       <form
       action="/api/form" method="post"
         onSubmit={handleSubmit}
@@ -148,6 +148,7 @@ const StepOne = ({ nextStep }) => {
         <Textarea label={"Revenues:"} placeholder={"Enter Your Revenues"} name={"revenue"}  />
         <Inputtag
           type={"text"}
+          placeholder={"write here.."}
           label={"How many Money has your Company received to date?"}
           onchange={handleInputChange}
           name={"money"}
@@ -201,9 +202,18 @@ const StepOne = ({ nextStep }) => {
 
         />
 
-        <DrpStep p={"How would you like to structure your raise on Republic?"} name={"structure"} option1={"Safe"} option2={"Debt"}
-          onchange={handleInputChange}
-          option3={"Convertible"} option4={"Equity"} option5={"Token sale"} option6={"Ursae"} option7={"other"}  />
+        <DrpStep
+          p={"How would you like to structure your raise on Republic?"}
+          option1={"Safe"}
+          option2={"Debt"}
+          onChange={handleInputChange}
+          option3={"Convertible"}
+          option4={"Equity"}
+          option5={"Token sale"}
+          option6={"Ursae"}
+          option7={"other"}
+          
+        />
 
         <Inputtag
           type={"file"}
@@ -251,7 +261,7 @@ const StepTwo = ({ previousStep }) => {
   const router = useRouter();
 
   return (
-    <div className="flex flex-col p-12 bg-slate-800">
+    <div className="flex flex-col p-12 h-[1024px] md:h-screen  min-w-min bg-slate-800 ">
       <form
       
       action="/api/form" method="post"
