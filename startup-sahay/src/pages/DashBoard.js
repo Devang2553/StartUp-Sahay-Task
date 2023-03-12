@@ -205,8 +205,8 @@ const DashBoard = () => {
           </div>
         </div>
       </div>
-      <section className="pt-28 bg-gray-800 w-full h-screen min-w-[320px]">
-        <div className="flex flex-col flex-wrap items-center  justify-center mx-auto    gap-5">
+      <section className="pt-28 bg-gray-800 h-screen min-w-min ">
+        <div className="flex flex-col flex-wrap items-center w-full   justify-center mx-auto    gap-5">
           <div className=" flex flex-col text-center gap-5 pb-8 text-white">
             <h1 className="text-4xl font-normal ">Personal info</h1>
             <p>Information about you and your company</p>
@@ -217,7 +217,7 @@ const DashBoard = () => {
             <h1 className="font-normal text-3xl">Basic info</h1>
           </div>
           <div className="flex flex-col gap-5 ">
-            <div className="flex  gap-36  border-b-2  md:flex-row flex-wrap border-slate-400 max-w-screen-sm pb-3">
+            <div className="flex  gap-36  border-b-2    border-slate-400 max-w-screen-sm pb-3">
               <h2 className="text-slate-600 ">CompanyName</h2>
               <p className="text-lg">{userData?.name}</p>
             </div>
