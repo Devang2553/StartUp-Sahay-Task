@@ -244,7 +244,7 @@ const StepTwo = ({ previousStep }) => {
     } catch (error) {
       console.log(error);
     }
-    router.push("/DashBoard");
+    router.push("/FormDone");
 
   };
 

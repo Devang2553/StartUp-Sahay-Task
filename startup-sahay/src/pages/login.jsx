@@ -6,7 +6,7 @@ import Fb from "../../public/fb.svg";
 import Google from "../../public/google.svg";
 import Instagram from "../../public/instagram.svg";
 import axiosInstance, { axiosAuth } from "@/utils/axiosInstance";
-
+import Link from "next/link";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,7 +26,7 @@ const Login = () => {
 
       localStorage.setItem("token", JSON.stringify(res.data));
       // Redirect the user to the dashboard or home page
-      router.push("/StepperForm");
+      router.push("/DashBoard");
     } catch (error) {
       alert("Password or email not valid");
       console.log(error);
@@ -42,7 +42,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center  h-screen items-center bg-slate-800">
+    <div className="main flex flex-col justify-center  h-screen items-center bg-slate-800">
       <div className="w-1/3 min-w-[300px] bg-slate-300 border-2 rounded-xl p-5  flex-col flex gap-2">
         <form onSubmit={handleClick} className="flex-col flex gap-4">
           <h2 className="font-bold text-2xl">Login</h2>
@@ -77,12 +77,12 @@ const Login = () => {
           </button>
         </form>
           <div className="flex justify-between">
-          <a href="#" onClick={()=>router.push('/register')} className="text-center font-light ">
+          <Link href="/register"  className="text-center font-light ">
           Not register?<span className="font-normal" >Click here</span>
-        </a>
-        <a onClick={()=>router.push('/forgotPassword')} href="#" className="text-center font-light ">
+        </Link>
+        <Link  href="/forgotPassword" className="text-center font-light ">
           Forgot your password?
-        </a>
+        </Link>
         </div>
         <div className="flex-col flex gap-2 ">
           <ButtonWithIcon

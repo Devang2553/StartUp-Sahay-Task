@@ -8,21 +8,12 @@ import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import { useRouter } from "next/router";
 
-// passport.use(new GoogleStrategy({
-//   clientID: "937645517026-vp7n8cvd78dg5jqvb4krmolkdkivdul8.apps.googleusercontent.com",
-//   clientSecret: "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",
-//   callbackURL: "http://localhost:3000/auth/google/callback"
-// },
-// function(accessToken, refreshToken, profile, cb) {
-//   // You can save the user data to your database or use it as needed
-//   return cb(null, profile);
-// }));
 import Input from "../Components/Inputtag";
 import Fb from "../../public/fb.svg";
 import Google from "../../public/google.svg";
 import Instagram from "../../public/instagram.svg";
 import axiosInstance from "@/utils/axiosInstance";
->>>>>>> 54753cf2e01e2ad3dcfd2678c42cb088355fdf04
+import Link from "next/link";
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -59,7 +50,7 @@ const SignUp = () => {
       } else {
         const data = { name, email, password, confirmPassword };
         await axiosInstance.post("/users/register", data);
-        router.push("/login");
+        router.push("/RegisterDone");
       }
       // Redirect the user to the dashboard or home page
     } catch (error) {
@@ -111,6 +102,7 @@ const SignUp = () => {
             <Input
               id="name"
               name="name"
+              autoComplete={"name"}
               type="text"
               placeholder="name"
               value={name}
@@ -121,6 +113,8 @@ const SignUp = () => {
               id="email-address"
               name="Email"
               type="email"
+              autoComplete={"email"}
+
               placeholder="Email address"
               value={email}
               onChange={handleEmailChange}
@@ -129,6 +123,7 @@ const SignUp = () => {
               id="password"
               name="password"
               type="password"
+              autoComplete={"password"}
               placeholder="Password"
               value={password}
               onChange={handlePasswordChange}
@@ -136,6 +131,7 @@ const SignUp = () => {
             <Input
               id="confirm-password"
               name="confirmPassword"
+              autoComplete={"confirmPassword"}
               type="password"
               placeholder="Confirm Password"
               value={confirmPassword}
@@ -143,17 +139,17 @@ const SignUp = () => {
               className="rounded-b-md"
             />
           </div>
-          <button type="submit" className="bg-blue-600 w-full rounded-md p-2">
+          <button type="submit"  className="bg-blue-600 w-full rounded-md p-2">
             <p className="text-white">Sign Up</p>
           </button>
         </form>
-        <a
-          href="#"
-          onClick={()=>router.push('/login')}
+        <Link
+          href="/login"
+          
           className="text-center font-normal text-gray-600 hover:text-blue-900 pb-1"
         >
           Already register ?<span className="font-bold"> Click here</span>
-        </a>
+        </Link>
 
         <div className="flex-col flex gap-2 ">
           <button onClick={()=>navigate.push("http://localhost:3000/api/google")}>Submit</button>
@@ -199,7 +195,6 @@ const SignUp = () => {
             icon={Fb}
             class="py-2"
             className="bg-[#1877F2] w-full rounded-md pl-3"
-            className="bg-blue-500 w-full rounded-md pl-3"
             onClick={fbAuth}
           >
             Sign up with Facebook
