@@ -6,6 +6,7 @@ import Fb from "../../public/fb.svg";
 import Google from "../../public/google.svg";
 import Instagram from "../../public/instagram.svg";
 import axiosInstance, { axiosAuth } from "@/utils/axiosInstance";
+import Link from "next/link";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -76,12 +77,12 @@ const Login = () => {
           </button>
         </form>
           <div className="flex justify-between">
-          <a href="#" onClick={()=>router.push('/register')} className="text-center font-light ">
+          <Link href="/register"  className="text-center font-light ">
           Not register?<span className="font-normal" >Click here</span>
-        </a>
-        <a onClick={()=>router.push('/forgotPassword')} href="#" className="text-center font-light ">
+        </Link>
+        <Link  href="/forgotPassword" className="text-center font-light ">
           Forgot your password?
-        </a>
+        </Link>
         </div>
         <div className="flex-col flex gap-2 ">
           <ButtonWithIcon
