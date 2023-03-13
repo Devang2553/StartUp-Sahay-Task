@@ -93,7 +93,7 @@ const Login = () => {
             icon={Fb}
             class="py-2"
             className="bg-blue-500 w-full rounded-md pl-3"
-            onClick={fbAuth}
+            
           >
             Login with Facebook
           </ButtonWithIcon>
