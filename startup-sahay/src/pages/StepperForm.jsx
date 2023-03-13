@@ -68,10 +68,16 @@ const StepOne = ({ nextStep }) => {
   const handleSubmit1 = async (event) => {
     try {
       event.preventDefault();
+      const info = window.localStorage.getItem("token");
+      console.log(JSON.parse(info));
+      const local = JSON.parse(info);
       // const data={name,title,website,industry,summary,revenue,money,address,country,available,generateRevenue,stage,structure,pitch,pastInvestment,communitySize,raisedMoney,runaway}
       const data = { formData };
       console.log(data, "FormData");
-      const response = await axiosInstance.post("/step1/api", formData);
+      const response = await axiosInstance.post("/step1/api", {
+        ...formData,
+        userId: local.user._id,
+      });
       JSON.stringify(response.data);
       // router.push("/DashBoard");
       console.log(response);
@@ -106,7 +112,6 @@ const StepOne = ({ nextStep }) => {
           placeholder={"Enter Your Title"}
           onChange={handleInputChange}
           name={"title"}
-
         />
         <Inputtag
           type={"text"}
@@ -114,7 +119,6 @@ const StepOne = ({ nextStep }) => {
           placeholder={"Enter Your Website"}
           onChange={handleInputChange}
           name={"website"}
-
         />
         <Inputtag
           type={"text"}
@@ -122,11 +126,18 @@ const StepOne = ({ nextStep }) => {
           placeholder={"Enter Industry of Your Company"}
           onChange={handleInputChange}
           name={"industry"}
-          
         />
-          
-        <Textarea label={"Summary:"} placeholder={"Enter Your Summary"} name={"summary"}   />
-        <Textarea label={"Revenues:"} placeholder={"Enter Your Revenues"} name={"revenue"} />
+
+        <Textarea
+          label={"Summary:"}
+          placeholder={"Enter Your Summary"}
+          name={"summary"}
+        />
+        <Textarea
+          label={"Revenues:"}
+          placeholder={"Enter Your Revenues"}
+          name={"revenue"}
+        />
         <Inputtag
           type={"text"}
           placeholder={"write here.."}
@@ -185,7 +196,6 @@ const StepOne = ({ nextStep }) => {
           option5={"Token sale"}
           option6={"Ursae"}
           option7={"other"}
-          
         />
 
         <Inputtag
@@ -228,7 +238,6 @@ const StepTwo = ({ previousStep }) => {
       console.log(error);
     }
     router.push("/FormDone");
-
   };
 
   const router = useRouter();

@@ -28,21 +28,17 @@ const DashBoard = () => {
       .catch((error) => console.error(error));
   }, []);
 
+  useEffect(() => {
+    const { user } = JSON.parse(window.localStorage.getItem("token"));
 
-
-  // useEffect(() => {
-   
-  //   axiosInstance
-  //     .get(`/step1/api/${user?._id}`)
-  //     .then((res) => {
-  //       setUserData(res);
-  //       console.log(res, "api response");
-  //     })
-  //     .catch((error) => console.error(error));
-  // }, []);
-
- 
-  
+    axiosInstance
+      .post(`/step1/api/form1`,{userId:user._id})
+      .then((res) => {
+        setUserData(res);
+        console.log(res, "api response");
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   if (!userData) {
     return <div>User not loged in</div>;
@@ -60,7 +56,7 @@ const DashBoard = () => {
   return (
     <div>
       <div>
-        <nav className="fixed top-0 z-50 w-full  border-b  bg-gray-800 border-gray-700" >
+        <nav className="fixed top-0 z-50 w-full  border-b  bg-gray-800 border-gray-700">
           <div className="px-3 py-3 lg:px-5 lg:pl-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center justify-start">
@@ -143,7 +139,6 @@ const DashBoard = () => {
                     className="z-50 hidden my-4 text-base list-none  divide-y  rounded shadow bg-gray-700 divide-gray-600"
                     id="dropdown-user"
                   >
-                   
                     <ul className="py-1" role="none">
                       <li>
                         <a
@@ -174,7 +169,7 @@ const DashBoard = () => {
         </nav>
 
         <div
-        title="slide-bar"
+          title="slide-bar"
           id="logo-sidebar"
           className="fixed top-0 left-0  w-64 h-screen pt-20 transition-transform -translate-x-full  border-r lg:translate-x-0 bg-gray-800 border-gray-700"
           aria-label="Sidebar"
@@ -218,7 +213,10 @@ const DashBoard = () => {
           </div>
         </div>
       </div>
-      <section title="main-page" className="pt-28 bg-gray-800  h-[946px] md:h-screen min-w-min ">
+      <section
+        title="main-page"
+        className="pt-28 bg-gray-800  h-[946px] md:h-screen min-w-min "
+      >
         <div className="flex flex-col flex-wrap items-center w-full   justify-center mx-auto    gap-5">
           <div className=" flex flex-col text-center gap-5 pb-8 text-white">
             <h1 className="text-4xl font-normal ">Personal info</h1>
@@ -237,14 +235,6 @@ const DashBoard = () => {
             <div className="flex  gap-44    border-b-2 border-slate-400 max-w-screen-sm pb-3">
               <h2 className="text-slate-600">yourEmail</h2>
               <p className="text-lg  ">{userData?.email}</p>
-            </div>
-            <div className="flex  gap-48 border-b-2 border-slate-400 max-w-screen-sm pb-3">
-              <h2 className="text-slate-600">Address</h2>
-              <p className="text-lg">bla bla bla</p>
-            </div>
-            <div className="flex gap-44  max-w-screen-sm pb-3">
-              <h2 className="text-slate-600">Phone No.</h2>
-              <p className="text-lg">9999999999</p>
             </div>
           </div>
         </div>
