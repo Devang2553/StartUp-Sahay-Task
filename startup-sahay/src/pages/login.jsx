@@ -14,7 +14,7 @@ const Login = () => {
   const router = useRouter();
 
   function fbAuth() {
-    window.location.href = "http://localhost:3004/api/auth/facebook";
+    window.location.href = "http://localhost:3001/auth/facebook";
   }
 
   const handleClick = async (e) => {
@@ -22,7 +22,6 @@ const Login = () => {
       e.preventDefault();
       const data = { email, password };
       const res = await axiosAuth.post("/users/login", { data });
-      
 
       localStorage.setItem("token", JSON.stringify(res.data));
       // Redirect the user to the dashboard or home page
@@ -69,20 +68,19 @@ const Login = () => {
             />
           </div>
           <button
-          
             type="submit"
             className="bg-blue-600 w-full rounded-md p-2 text-white"
           >
             Login
           </button>
         </form>
-          <div className="flex justify-between">
-          <Link href="/register"  className="text-center font-light ">
-          Not register?<span className="font-normal" >Click here</span>
-        </Link>
-        <Link  href="/forgotPassword" className="text-center font-light ">
-          Forgot your password?
-        </Link>
+        <div className="flex justify-between">
+          <Link href="/register" className="text-center font-light ">
+            Not register?<span className="font-normal">Click here</span>
+          </Link>
+          <Link href="/forgotPassword" className="text-center font-light ">
+            Forgot your password?
+          </Link>
         </div>
         <div className="flex-col flex gap-2 ">
           <ButtonWithIcon

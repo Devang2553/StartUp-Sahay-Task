@@ -15,7 +15,7 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   function fbAuth() {
-    window.location.href = "http://localhost:3001/api/auth/facebook";
+    window.location.href = "http://localhost:3001/auth/facebook";
   }
 
   const handleUsernameChange = (event) => {
@@ -91,7 +91,6 @@ const SignUp = () => {
               name="Email"
               type="email"
               autoComplete={"email"}
-
               placeholder="Email address"
               value={email}
               onChange={handleEmailChange}
@@ -116,13 +115,12 @@ const SignUp = () => {
               className="rounded-b-md"
             />
           </div>
-          <button type="submit"  className="bg-blue-600 w-full rounded-md p-2">
+          <button type="submit" className="bg-blue-600 w-full rounded-md p-2">
             <p className="text-white">Sign Up</p>
           </button>
         </form>
         <Link
           href="/login"
-          
           className="text-center font-normal text-gray-600 hover:text-blue-900 pb-1"
         >
           Already register ?<span className="font-bold"> Click here</span>
