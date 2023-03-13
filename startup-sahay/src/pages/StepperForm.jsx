@@ -246,6 +246,7 @@ const StepTwo = ({ previousStep }) => {
           name={"pastInvestment"}
           label={"Yes"}
           label2={"No"}
+          onChange={handleInputChange}
         />
         <DrpStep
           option1={"0-5k"}
@@ -253,6 +254,7 @@ const StepTwo = ({ previousStep }) => {
           option3={"50k+"}
           name={"communitySize"}
           p={"What's the Rough size of your Community?"}
+          onChange={handleInputChange}
         />
         <Inputtag
           type={"number"}

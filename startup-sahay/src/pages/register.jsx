@@ -48,7 +48,7 @@ const SignUp = () => {
       }
       // Redirect the user to the dashboard or home page
     } catch (error) {
-      console.log(error);
+      alert("Email id already exists")
     }
   };
 

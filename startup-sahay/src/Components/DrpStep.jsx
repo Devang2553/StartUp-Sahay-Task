@@ -17,12 +17,12 @@ const DrpStep = ({
 
       <div>
         <select name="Drop" id="Drop" className="w-auto rounded-md p-2"  required={true} onChange={onChange}>
-          <option value="1" label={option1}>{option1}</option>
-          <option value="2" label={option2}>{option2}</option>
-          <option value="3" label={option3}>{option3}</option>
-          <option value="4" label={option4}>{option4}</option>
-          <option value="4" label={option5}>{option5}</option>
-          <option value="4" label={option6}>{option6}</option>
+          <option value={option1} label={option1}>{option1}</option>
+          <option value={option2} label={option2}>{option2}</option>
+          <option value={option3} label={option3}>{option3}</option>
+          <option value={option4} label={option4}>{option4}</option>
+          <option value={option5} label={option5}>{option5}</option>
+          <option value={option6} label={option6}>{option6}</option>
 
           <option value="4">{option7}</option>
         </select>
