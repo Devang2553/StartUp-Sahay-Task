@@ -28,6 +28,19 @@ const DashBoard = () => {
       .catch((error) => console.error(error));
   }, []);
 
+
+
+  // useEffect(() => {
+   
+  //   axiosInstance
+  //     .get(`/step1/api/${user?._id}`)
+  //     .then((res) => {
+  //       setUserData(res);
+  //       console.log(res, "api response");
+  //     })
+  //     .catch((error) => console.error(error));
+  // }, []);
+
  
   
 

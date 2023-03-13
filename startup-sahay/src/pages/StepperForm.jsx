@@ -45,20 +45,20 @@ const StepperForm = () => {
 
 const StepOne = ({ nextStep }) => {
   const [formData, setFormData] = useState({});
-  const [name, setName] = useState("");
-  const [title, setTitle] = useState("");
-  const [website, setWebsite] = useState("");
-  const [industry, setIndustry] = useState("");
-  const [summary, setSummary] = useState("");
-  const [revenue, setRevenue] = useState("");
-  const [money, setMoney] = useState("");
-  const [address, setAddress] = useState("");
-  const [country, setCountry] = useState("");
-  const [available, setAvailble] = useState("");
-  const [generateRevenue, setGenerateRevenue] = useState("");
-  const [stage, setStage] = useState("");
-  const [structure, setStrucuture] = useState("");
-  const [pitch, setPitch] = useState("");
+  // const [name, setName] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [website, setWebsite] = useState("");
+  // const [industry, setIndustry] = useState("");
+  // const [summary, setSummary] = useState("");
+  // const [revenue, setRevenue] = useState("");
+  // const [money, setMoney] = useState("");
+  // const [address, setAddress] = useState("");
+  // const [country, setCountry] = useState("");
+  // const [available, setAvailble] = useState("");
+  // const [generateRevenue, setGenerateRevenue] = useState("");
+  // const [stage, setStage] = useState("");
+  // const [structure, setStrucuture] = useState("");
+  // const [pitch, setPitch] = useState("");
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -80,6 +80,8 @@ const StepOne = ({ nextStep }) => {
     }
     nextStep();
   };
+
+  
 
   return (
     <div className=" flex flex-col min-w-max   p-12 bg-slate-800">
@@ -219,7 +221,7 @@ const StepTwo = ({ previousStep }) => {
       // const data={name,title,website,industry,summary,revenue,money,address,country,available,generateRevenue,stage,structure,pitch,pastInvestment,communitySize,raisedMoney,runaway}
       const data = { formData };
       console.log(data);
-      const response = await axiosInstance.post("/step2/api", data);
+      const response = await axiosInstance.post("/step2/api", formData);
       JSON.stringify(response.data);
       console.log(response.data);
     } catch (error) {
