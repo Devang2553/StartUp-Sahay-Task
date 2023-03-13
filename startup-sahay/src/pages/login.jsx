@@ -13,9 +13,6 @@ const Login = () => {
 
   const router = useRouter();
 
-  function fbAuth() {
-    window.location.href = "http://localhost:3004/api/auth/facebook";
-  }
 
   const handleClick = async (e) => {
     try {

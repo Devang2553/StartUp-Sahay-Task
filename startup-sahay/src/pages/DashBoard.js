@@ -1,11 +1,10 @@
-import { Fragment, useEffect, useState } from "react";
-import { Menu, Transition } from "@headlessui/react";
+import {  useEffect, useState } from "react";
+import { Menu } from "@headlessui/react";
 import Profile from "../../public/avatarr.svg";
 import About from "../../public/aboutus.svg";
 import Logo from "../../public/logo.png";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import axios from "axios";
 import axiosInstance from "@/utils/axiosInstance";
 
 function classNames(...classes) {
